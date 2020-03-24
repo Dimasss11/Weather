@@ -35,12 +35,13 @@ function searchName(f) {
    if(diff<601){
      let wind="wind"+name;
      document.getElementById(wind).innerHTML = data.wind.speed+' m/s';
-     document.getElementById(`temp_min${name}`).innerHTML = Math.round(data.main.temp_min-273)+'°C';
-     document.getElementById(`temp_max${name}`).innerHTML = Math.round(data.main.temp_max-273)+'°C';
+     document.getElementById(`temp_min${name}`).innerHTML = (data.main.temp_min-273.15).toFixed(1)+'°C';
+     document.getElementById(`temp_max${name}`).innerHTML = (data.main.temp_max-273.15).toFixed(1)+'°C';
      document.getElementById(`clouds${name}`).innerHTML = data.clouds.all+'%';
      document.getElementById(`humidity${name}`).innerHTML = data.main.humidity+'%';
      document.getElementById(`sunrise${name}`).innerHTML = convert(data.sys.sunrise);
      document.getElementById(`sunset${name}`).innerHTML = convert(data.sys.sunset);
+     document.querySelector(".ac_input").value="";
    }else{
      data.time=Math.round(new Date().getTime()/1000);
      data = JSON.stringify(data);

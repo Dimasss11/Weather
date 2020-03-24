@@ -2,6 +2,7 @@
 date_default_timezone_set('Europe/Kiev');
 require_once "connection.php";
 require_once "db.php";
+$wrong;
 
 $link=mysqli_connect($host, $user, $password, $database)
   or die("Error ". mysqli_error($link));
@@ -43,6 +44,8 @@ if($_POST['city']){
     $coord=$data->coord->lon."&".$data->coord->lat;
     $weather=new Weather($link, $data->apiUrl, time(), $data->name, $data->sys->country, $coord, $data->id);
     $weather->save();
+  }else{
+    $wrong=true;
   }
 }
 ?>
@@ -61,6 +64,12 @@ if($_POST['city']){
             <input id="inputSearch" class="search_city-submit" type="submit" value="Add">
           </form>
         </div>
+        <?php if($wrong){ ?>
+          <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Not found</strong>
+          </div>
+        <?php } ?>
         <div class="info-weather">
         <?php
         $art=Weather::get($link);

@@ -52,4 +52,36 @@ table{
   position: absolute;
 }
 
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  opacity: 0.83;
+  color: white;
+  margin: 2em 2em 0;
+  border-radius: 5px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+a{text-decoration: none;}
+
+a:visited{color:green}
+
+a:hover{color:red}
+
 tr:nth-child(odd) { background-color: #f9f9f9 }
